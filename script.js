@@ -19,7 +19,7 @@ function profile1Carousel(direction) {
   profile1Index = Math.max(
     0, // minimum index (first image)
     Math.min(profile1Index + direction, images.length - 1) // maximum index (last image)
-  );
+  );  
   // add active class to new image to show it
   images[profile1Index].classList.add("active");
 }
