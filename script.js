@@ -128,13 +128,14 @@ function getCurrentProfileName() {
     // Array of profile names in the same order as the profiles
     "Mahima",
     "Jose",
+    "Chris",
     "Arielle",
     "Claire",
-    "Gio",
+    "Henry",
     "HungChi",
     "Sara",
     "Joshua",
-    "Henry",
+    "Gio",
     "Saul",
   ];
   // return the name for the current profile index, or fallback text
