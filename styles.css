@@ -43,7 +43,7 @@ body {
   /* remove default browser margin */
   padding: 0;
   /* remove default browser padding */
-  background: linear-gradient(to bottom, #ff5600, #ff772e);
+  background: linear-gradient(to bottom, #ff772e, #ff4400);
   /* set gradient style barbarian background color */
   width: 100vw;
   /* make elements take full viewport width */
