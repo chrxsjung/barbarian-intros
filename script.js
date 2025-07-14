@@ -45,14 +45,14 @@ function profileCarousel(direction) {
 
 //The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
 
-//that is why there was a bug where 2 images showed. 
+//that is why there was a bug where 2 images showed.
 
-//this makes it so that we know which profile is active and every otherr image is unactive. 
+//this makes it so that we know which profile is active and every otherr image is unactive.
 
 // function to update which profile is currently visible on screen
 function updateProfile() {
   // hide all profile cards and all their images
-  profiles.forEach((profile, idx) => {
+  profiles.forEach((profile) => {
     profile.classList.remove("active", "fade-out");
     // hide all images in this profile
     const images = profile.querySelectorAll(".carousel-image");
@@ -76,6 +76,7 @@ function nextProfile() {
   if (currentProfileIndex < totalProfiles - 1) {
     currentProfileIndex++; // increment to next profile
     updateProfile(); // update the display to show new profile
+    scrollAppContainerToTop(); // reset scroll position to top for new profile
   }
   // if at the last profile, do nothing (no end screen or loop)
 }
@@ -86,6 +87,7 @@ function previousProfile() {
   if (currentProfileIndex > 0) {
     currentProfileIndex--; // decrement to previous profile
     updateProfile(); // update the display to show new profile
+    scrollAppContainerToTop(); // reset scroll position to top for new profile
   }
 }
 
@@ -123,11 +125,17 @@ function reactToProfile(action) {
 function getCurrentProfileName() {
   // array of profile names in the same order as the profiles
   const profileNames = [
-    "Christopher Jung",
-    "Marcus Rodriguez",
-    "Emily Johnson",
-    "Alex Thompson",
-    "Priya Patel",
+    // Array of profile names in the same order as the profiles
+    "Mahima",
+    "Jose",
+    "Arielle",
+    "Claire",
+    "Gio",
+    "HungChi",
+    "Sara",
+    "Joshua",
+    "Henry",
+    "Saul",
   ];
   // return the name for the current profile index, or fallback text
   return profileNames[currentProfileIndex] || "the intern";
@@ -138,10 +146,16 @@ function getCurrentProfileQrCode() {
   // array of qr code files for each profile (currently all use same file)
   const qrCodes = [
     "qrCodes/chris.png",
-    "qrCodes/chris.png",
-    "qrCodes/chris.png",
-    "qrCodes/chris.png",
-    "qrCodes/chris.png",
+    "qrCodes/mahima.png",
+    "qrCodes/jose.png",
+    "qrCodes/arielle.png",
+    "qrCodes/claire.png",
+    "qrCodes/henry.png",
+    "qrCodes/hungchi.png",
+    "qrCodes/sara.png",
+    "qrCodes/joshua.png",
+    "qrCodes/gio.png",
+    "qrCodes/saul.png",
   ];
 
   // return the qr code path for the current profile index
@@ -224,6 +238,18 @@ window.addEventListener("keydown", function (event) {
     // enter key likes the current profile
   } else if (event.key === "Enter") {
     reactToProfile("like");
+  } else if (event.key === "ArrowUp") {
+    // Scroll the app container up by 60px (like a scroll wheel up)
+    const appContainer = document.querySelector(".app-container"); // get the main white container
+    if (appContainer) {
+      appContainer.scrollTop -= 60; // move scroll position up by 60 pixels
+    }
+  } else if (event.key === "ArrowDown") {
+    // Scroll the app container down by 60px (like a scroll wheel down)
+    const appContainer = document.querySelector(".app-container"); // get the main white container
+    if (appContainer) {
+      appContainer.scrollTop += 60; // move scroll position down by 60 pixels
+    }
   }
 });
 
