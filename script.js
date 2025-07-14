@@ -121,6 +121,14 @@ function reactToProfile(action) {
   }, 350); // wait 350ms for fade-out animation to complete
 }
 
+/*
+Because both the profile names array and the QR code file paths array are in the same order, and both use currentProfileIndex to select their value, the following is guaranteed:
+
+If the profile name displayed is "Sara" (from profileNames[currentProfileIndex]),
+then the QR code shown will be "sara.png" (from qrCodes[currentProfileIndex]).
+
+*/
+
 // function to get the current profile's name for the modal display
 function getCurrentProfileName() {
   // array of profile names in the same order as the profiles
@@ -147,7 +155,7 @@ function getCurrentProfileQrCode() {
   // array of qr code files for each profile (currently all use same file)
   const qrCodes = [
     "qrCodes/mahima.png",
-    "qrCodes/jose.png",
+    "qrCodes/jose.jpg",
     "qrCodes/chrisQR.png",
     "qrCodes/arielle.png",
     "qrCodes/claire.png",
