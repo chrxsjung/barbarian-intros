@@ -707,10 +707,26 @@ body {
     /* no border radius on mobile for full-screen feel */
   }
 
-  /* header adjustments for mobile */
+  /* Ensure header is visible and spaced on mobile */
+  .header {
+    padding: 28px 0 18px 0;
+    /* more vertical padding for mobile */
+    margin-bottom: 32px;
+    /* increased space below header for better separation */
+    background: rgba(255, 255, 255, 0.95);
+    /* subtle background for visibility (remove if not needed) */
+    position: relative;
+    /* ensure stacking context */
+    z-index: 10;
+    /* keep above other content */
+    border-radius: 0 0 18px 18px;
+    /* rounded bottom corners for style */
+  }
+
+  /* Adjust h1 margin for mobile - even more top space */
   .header h1 {
-    font-size: 2.2em;
-    /* slightly smaller title on mobile */
+    margin: 32px 0 10px 0;
+    /* 32px top, 0 right, 10px bottom, 0 left */
   }
 
   .header p {
