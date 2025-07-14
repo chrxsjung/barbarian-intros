@@ -1,18 +1,18 @@
 // =====================
-// CAROUSEL & PROFILE LOGIC EXPLANATION
+// carousel & profile logic explanation
 // =====================
 /*
-This app displays multiple intern profiles, each with its own image carousel. The carousel and profile navigation logic is designed to ensure:
-- Each profile remembers which image was last shown in its carousel.
-- Switching between profiles always shows the correct image for that profile.
-- Carousel navigation (left/right arrows) only affects the currently active profile.
+this app displays multiple intern profiles, each with its own image carousel. the carousel and profile navigation logic is designed to ensure:
+- each profile remembers which image was last shown in its carousel.
+- switching between profiles always shows the correct image for that profile.
+- carousel navigation (left/right arrows) only affects the currently active profile.
 
-Key Concepts:
-1. carouselIndices: An array where each element stores the current image index for a profile's carousel. For example, carouselIndices[0] is the index for profile 1, carouselIndices[1] for profile 2, etc.
-2. profileCarousel(direction): A generic function that moves the carousel left or right for the currently active profile. It updates the correct index in carouselIndices and toggles the 'active' class on images to show/hide them.
-3. updateProfile(): When switching profiles, this function hides all profiles and their images, then shows the selected profile and the correct image in its carousel (using carouselIndices).
+key concepts:
+1. carouselindices: an array where each element stores the current image index for a profile's carousel. for example, carouselindices[0] is the index for profile 1, carouselindices[1] for profile 2, etc.
+2. profilecarousel(direction): a generic function that moves the carousel left or right for the currently active profile. it updates the correct index in carouselindices and toggles the 'active' class on images to show/hide them.
+3. updateprofile(): when switching profiles, this function hides all profiles and their images, then shows the selected profile and the correct image in its carousel (using carouselindices).
 
-This approach ensures each profile's carousel is independent, and navigation is smooth and bug-free.
+this approach ensures each profile's carousel is independent, and navigation is smooth and bug-free.
 */
 // global state management - keeps track of which profile is currently displayed
 let currentProfileIndex = 0; // start at the first profile (index 0)
@@ -22,8 +22,16 @@ const totalProfiles = profiles.length; // count how many profiles there are for 
 // carousel state management for all profiles - array of indices
 let carouselIndices = Array.from({ length: totalProfiles }, () => 0); // each profile gets its own index
 
-// function to handle left/right arrow clicks for the active profile's image carousel
-// direction: -1 for left arrow, 1 for right arrow
+// =====================
+// handles left/right arrow clicks for the active profile's image carousel.
+// trigger: called by clicking carousel arrow buttons in the ui.
+// steps:
+//   1. gets the currently active profile and its images.
+//   2. removes 'active' from the current image.
+//   3. updates the carousel index for this profile (with bounds checking).
+//   4. adds 'active' to the new image to show it.
+// outcome: only the correct image for the active profile is visible; carousel state is preserved per profile.
+// =====================
 function profileCarousel(direction) {
   // get the index of the currently active profile
   const activeProfile = currentProfileIndex;
@@ -43,13 +51,14 @@ function profileCarousel(direction) {
   images[carouselIndices[activeProfile]].classList.add("active");
 }
 
-//The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
-
-//that is why there was a bug where 2 images showed.
-
-//this makes it so that we know which profile is active and every otherr image is unactive.
-
-// function to update which profile is currently visible on screen
+// =====================
+// updates which profile is currently visible on screen.
+// trigger: called when switching profiles (next/previous), or on app init.
+// steps:
+//   1. hides all profile cards and their images.
+//   2. shows the current profile and the correct image in its carousel.
+// outcome: only one profile and its correct image are visible at a time.
+// =====================
 function updateProfile() {
   // hide all profile cards and all their images
   profiles.forEach((profile) => {
@@ -70,7 +79,14 @@ function updateProfile() {
   }
 }
 
-// function to navigate to the next profile in the sequence
+// =====================
+// navigates to the next profile in the sequence.
+// trigger: called by right nav button, right arrow key, or after closing modal.
+// steps:
+//   1. increments currentprofileindex if not at last profile.
+//   2. calls updateprofile() and scrolls to top.
+// outcome: ui updates to show the next profile.
+// =====================
 function nextProfile() {
   // check if we're not at the last profile before moving forward
   if (currentProfileIndex < totalProfiles - 1) {
@@ -81,7 +97,14 @@ function nextProfile() {
   // if at the last profile, do nothing (no end screen or loop)
 }
 
-// function to navigate to the previous profile in the sequence
+// =====================
+// navigates to the previous profile in the sequence.
+// trigger: called by left nav button or left arrow key.
+// steps:
+//   1. decrements currentprofileindex if not at first profile.
+//   2. calls updateprofile() and scrolls to top.
+// outcome: ui updates to show the previous profile.
+// =====================
 function previousProfile() {
   // check if we're not at the first profile before moving backward
   if (currentProfileIndex > 0) {
@@ -91,8 +114,16 @@ function previousProfile() {
   }
 }
 
-// function to handle like or pass actions on the current profile
-// action: 'like' or 'pass' string indicating user's choice
+// =====================
+// handles like or pass actions on the current profile.
+// trigger: called by like/pass buttons or enter key.
+// steps:
+//   1. adds fade-out animation to current profile.
+//   2. after animation, hides profile and (if liked) shows modal.
+//   3. if liked, shows modal and moves to next profile after closing.
+//   4. if passed, moves to next profile directly.
+// outcome: smooth transition/animation, modal for likes, profile navigation.
+// =====================
 function reactToProfile(action) {
   // get the current profile card element
   const currentProfile = profiles[currentProfileIndex];
@@ -129,7 +160,13 @@ then the QR code shown will be "sara.png" (from qrCodes[currentProfileIndex]).
 
 */
 
-// function to get the current profile's name for the modal display
+// =====================
+// returns the current profile's name for modal display.
+// trigger: called by showcoffeemodal() to personalize modal text.
+// steps:
+//   1. uses currentprofileindex to get the name from a static array.
+// outcome: returns the correct name for the current profile.
+// =====================
 function getCurrentProfileName() {
   // array of profile names in the same order as the profiles
   const profileNames = [
@@ -150,7 +187,13 @@ function getCurrentProfileName() {
   return profileNames[currentProfileIndex] || "the intern";
 }
 
-// function to get the current profile's qr code file path
+// =====================
+// returns the current profile's qr code file path.
+// trigger: called by showcoffeemodal() to display the correct qr code.
+// steps:
+//   1. uses currentprofileindex to get the qr code path from a static array.
+// outcome: returns the correct qr code path for the current profile.
+// =====================
 function getCurrentProfileQrCode() {
   // array of qr code files for each profile (currently all use same file)
   const qrCodes = [
@@ -171,8 +214,16 @@ function getCurrentProfileQrCode() {
   return qrCodes[currentProfileIndex];
 }
 
-// function to show the coffee chat modal with qr code
-// onClose: callback function to execute when modal is closed
+// =====================
+// shows the coffee chat modal with qr code.
+// trigger: called by reacttoprofile('like') after fade-out animation.
+// steps:
+//   1. gets modal and its elements.
+//   2. sets match title/description and qr code for current profile.
+//   3. shows modal (display: flex), hides app container.
+//   4. sets up close button to hide modal, reset qr, show app, and call callback.
+// outcome: modal pops up with personalized info; closes cleanly and triggers callback (e.g., next profile).
+// =====================
 function showCoffeeModal(onClose) {
   // get references to modal elements
   const modal = document.getElementById("coffeeModal"); // get the modal overlay element
@@ -224,7 +275,13 @@ function showCoffeeModal(onClose) {
   };
 }
 
-// function to scroll the app container back to the top
+// =====================
+// scrolls the app container back to the top.
+// trigger: called after profile navigation or modal close.
+// steps:
+//   1. gets app container and sets scrolltop to 0.
+// outcome: profile view is reset to top for new profile.
+// =====================
 function scrollAppContainerToTop() {
   const appContainer = document.querySelector(".app-container"); // get the app container
   if (appContainer) {
@@ -232,7 +289,16 @@ function scrollAppContainerToTop() {
   }
 }
 
-// keyboard navigation event listener - handles arrow keys and enter key
+// =====================
+// handles keyboard navigation for profiles and scrolling.
+// trigger: listens for keydown events globally.
+// steps:
+//   1. ignores keys if modal is open.
+//   2. left/right arrows: previous/next profile.
+//   3. enter: like current profile.
+//   4. up/down arrows: scroll app container.
+// outcome: enables smooth keyboard navigation and accessibility.
+// =====================
 window.addEventListener("keydown", function (event) {
   // check if modal is open - if so, ignore key presses
   const modal = document.getElementById("coffeeModal");
@@ -262,10 +328,23 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-// initialize the app by showing the first profile
+// =====================
+// initializes the app by showing the first profile.
+// trigger: runs once on script load.
+// steps:
+//   1. calls updateprofile() to display the first profile.
+// outcome: app starts with the first profile visible.
+// =====================
 updateProfile();
 
-// add fade-out animation styles dynamically to the page
+// =====================
+// adds fade-out animation styles dynamically to the page.
+// trigger: runs once on script load.
+// steps:
+//   1. creates a <style> element with fade-out css.
+//   2. appends it to the document head.
+// outcome: enables fade-out animation for profile transitions.
+// =====================
 const style = document.createElement("style"); // create a new style element
 style.innerHTML = `
   .fade-out {
