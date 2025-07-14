@@ -43,6 +43,12 @@ function profileCarousel(direction) {
   images[carouselIndices[activeProfile]].classList.add("active");
 }
 
+//The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
+
+//that is why there was a bug where 2 images showed. 
+
+//this makes it so that we know which profile is active and every otherr image is unactive. 
+
 // function to update which profile is currently visible on screen
 function updateProfile() {
   // hide all profile cards and all their images
