@@ -694,34 +694,191 @@ body {
 
 /* responsive styles for mobile devices */
 @media (max-width: 500px) {
+
+  /* main app container adjustments for mobile */
   .app-container {
     max-width: 100vw;
     /* full viewport width on mobile */
-    padding: 12px 0 80px 0;
-    /* reduced padding for mobile */
+    padding: 16px 0 100px 0;
+    /* better padding for mobile - more top padding, more bottom for action buttons */
+    max-height: 100vh;
+    /* full viewport height on mobile */
+    border-radius: 0;
+    /* no border radius on mobile for full-screen feel */
   }
 
+  /* header adjustments for mobile */
+  .header h1 {
+    font-size: 2.2em;
+    /* slightly smaller title on mobile */
+  }
+
+  .header p {
+    font-size: 1em;
+    /* smaller subtitle on mobile */
+  }
+
+  /* profile card adjustments for mobile */
   .profile-photo-card,
   .prompt-card {
     border-radius: 16px;
     /* smaller border radius on mobile */
-    margin-bottom: 14px;
-    /* reduced margin on mobile */
+    margin-bottom: 16px;
+    /* consistent margin on mobile */
+    width: 85%;
+    /* slightly wider cards on mobile */
   }
 
-  .profile-photo {
+  /* image carousel adjustments for mobile */
+  .image-carousel {
+    width: 85%;
+    /* slightly wider carousel on mobile */
+    margin-bottom: 20px;
+    /* more space below carousel */
+  }
+
+  .carousel-image {
     border-radius: 16px;
     /* smaller border radius on mobile */
-    max-width: 100vw;
-    /* full viewport width on mobile */
+  }
+
+  /* carousel arrow adjustments for mobile */
+  .carousel-arrow {
+    width: 40px;
+    /* smaller arrows on mobile */
+    height: 40px;
+    /* smaller arrows on mobile */
+    font-size: 18px;
+    /* smaller arrow icons on mobile */
+  }
+
+  /* profile info adjustments for mobile */
+  .profile-info h3 {
+    font-size: 1.4em;
+    /* slightly smaller name on mobile */
+  }
+
+  .profile-info p {
+    font-size: 0.95em;
+    /* slightly smaller text on mobile */
+  }
+
+  /* prompt card text adjustments for mobile */
+  .prompt-question {
+    font-size: 0.95em;
+    /* smaller question text on mobile */
+  }
+
+  .prompt-answer {
+    font-size: 0.9em;
+    /* smaller answer text on mobile */
+  }
+
+  /* action button adjustments for mobile */
+  .action-btn {
+    width: 52px;
+    /* slightly larger buttons on mobile for better touch targets */
+    height: 52px;
+    /* slightly larger buttons on mobile for better touch targets */
+    font-size: 24px;
+    /* larger icons on mobile for better visibility */
+  }
+
+  /* navigation button positioning for mobile */
+  .nav-btn {
+    width: 44px;
+    /* smaller nav buttons on mobile */
+    height: 44px;
+    /* smaller nav buttons on mobile */
+    font-size: 20px;
+    /* smaller nav arrow icons on mobile */
+    bottom: 16px;
+    /* closer to bottom on mobile */
+  }
+
+  /* left navigation button positioning for mobile */
+  .nav-left {
+    left: 16px;
+    /* position from left edge on mobile */
+  }
+
+  /* right navigation button positioning for mobile */
+  .nav-right {
+    right: 16px;
+    /* position from right edge on mobile */
+  }
+
+  /* modal adjustments for mobile */
+  .modal-content {
+    width: 90%;
+    /* wider modal on mobile */
+    max-width: 320px;
+    /* maximum width for mobile */
+    padding: 24px 20px;
+    /* adjusted padding for mobile */
+  }
+
+  .match-title {
+    font-size: 1.8em;
+    /* smaller title on mobile */
+  }
+
+  .match-desc {
+    font-size: 1em;
+    /* smaller description on mobile */
+  }
+
+  /* qr code adjustments for mobile */
+  .qr-code-placeholder {
+    width: 240px;
+    /* smaller qr code on mobile */
+    height: 240px;
+    /* smaller qr code on mobile */
+  }
+
+  /* close button adjustments for mobile */
+  #closeModalBtn {
+    font-size: 0.95rem;
+    /* slightly smaller button text on mobile */
+    padding: 12px 32px;
+    /* more padding for better touch target */
+  }
+}
+
+/* additional responsive styles for very small screens */
+@media (max-width: 360px) {
+  .app-container {
+    padding: 12px 0 90px 0;
+    /* even less padding on very small screens */
+  }
+
+  .header h1 {
+    font-size: 2em;
+    /* even smaller title on very small screens */
+  }
+
+  .profile-photo-card,
+  .prompt-card {
+    width: 90%;
+    /* wider cards on very small screens */
+  }
+
+  .image-carousel {
+    width: 90%;
+    /* wider carousel on very small screens */
   }
 
   .action-btn {
     width: 48px;
-    /* smaller button size on mobile */
+    /* slightly smaller buttons on very small screens */
     height: 48px;
-    /* smaller button size on mobile */
-    font-size: 22px;
-    /* smaller icon size on mobile */
+    /* slightly smaller buttons on very small screens */
+  }
+
+  .nav-btn {
+    width: 40px;
+    /* smaller nav buttons on very small screens */
+    height: 40px;
+    /* smaller nav buttons on very small screens */
   }
 }

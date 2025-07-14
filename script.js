@@ -146,9 +146,9 @@ function getCurrentProfileName() {
 function getCurrentProfileQrCode() {
   // array of qr code files for each profile (currently all use same file)
   const qrCodes = [
-    "qrCodes/chris.png",
     "qrCodes/mahima.png",
     "qrCodes/jose.png",
+    "qrCodes/chrisQR.png",
     "qrCodes/arielle.png",
     "qrCodes/claire.png",
     "qrCodes/henry.png",
@@ -183,7 +183,7 @@ function showCoffeeModal(onClose) {
     matchTitle.textContent = "It's a Match! 🎉"; // set the match title
   }
   if (matchDesc) {
-    matchDesc.textContent = `You and ${currentName} are now connected! Time to welcome them to the team properly.`; // set personalized description
+    matchDesc.textContent = `You and ${currentName} are now connected! Time to welcome them to Barbarian properly.`; // set personalized description
   }
 
   // show the modal and qr code
