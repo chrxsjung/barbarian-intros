@@ -1,36 +1,66 @@
+// =====================
+// CAROUSEL & PROFILE LOGIC EXPLANATION
+// =====================
+/*
+This app displays multiple intern profiles, each with its own image carousel. The carousel and profile navigation logic is designed to ensure:
+- Each profile remembers which image was last shown in its carousel.
+- Switching between profiles always shows the correct image for that profile.
+- Carousel navigation (left/right arrows) only affects the currently active profile.
+
+Key Concepts:
+1. carouselIndices: An array where each element stores the current image index for a profile's carousel. For example, carouselIndices[0] is the index for profile 1, carouselIndices[1] for profile 2, etc.
+2. profileCarousel(direction): A generic function that moves the carousel left or right for the currently active profile. It updates the correct index in carouselIndices and toggles the 'active' class on images to show/hide them.
+3. updateProfile(): When switching profiles, this function hides all profiles and their images, then shows the selected profile and the correct image in its carousel (using carouselIndices).
+
+This approach ensures each profile's carousel is independent, and navigation is smooth and bug-free.
+*/
 // global state management - keeps track of which profile is currently displayed
 let currentProfileIndex = 0; // start at the first profile (index 0)
 const profiles = document.querySelectorAll(".profile-card"); // get all profile cards from the page using css selector
 const totalProfiles = profiles.length; // count how many profiles there are for navigation limits
 
-// carousel state management for profile 1's image carousel
-let profile1Index = 0; // current image index for profile 1's carousel (starts at first image)
+// carousel state management for all profiles - array of indices
+let carouselIndices = Array.from({ length: totalProfiles }, () => 0); // each profile gets its own index
 
-// function to handle left/right arrow clicks for profile 1's image carousel
+// function to handle left/right arrow clicks for the active profile's image carousel
 // direction: -1 for left arrow, 1 for right arrow
-function profile1Carousel(direction) {
+function profileCarousel(direction) {
+  // get the index of the currently active profile
+  const activeProfile = currentProfileIndex;
   // get all images in the currently active profile's carousel
   const images = document.querySelectorAll(
     ".profile-card.active .carousel-image"
   );
+  if (images.length === 0) return; // safety check
   // remove active class from current image to hide it
-  images[profile1Index].classList.remove("active");
-  // update index with bounds checking - don't wrap around, stay within valid range
-  profile1Index = Math.max(
+  images[carouselIndices[activeProfile]].classList.remove("active");
+  // update index for this profile with bounds checking
+  carouselIndices[activeProfile] = Math.max(
     0, // minimum index (first image)
-    Math.min(profile1Index + direction, images.length - 1) // maximum index (last image)
-  );  
+    Math.min(carouselIndices[activeProfile] + direction, images.length - 1) // maximum index (last image)
+  );
   // add active class to new image to show it
-  images[profile1Index].classList.add("active");
+  images[carouselIndices[activeProfile]].classList.add("active");
 }
 
 // function to update which profile is currently visible on screen
 function updateProfile() {
-  // hide all profile cards by removing both 'active' and 'fade-out' classes
-  profiles.forEach((profile) => profile.classList.remove("active", "fade-out"));
+  // hide all profile cards and all their images
+  profiles.forEach((profile, idx) => {
+    profile.classList.remove("active", "fade-out");
+    // hide all images in this profile
+    const images = profile.querySelectorAll(".carousel-image");
+    images.forEach((img) => img.classList.remove("active"));
+  });
   // show the current profile by adding the 'active' class (if profile exists)
   if (profiles[currentProfileIndex]) {
     profiles[currentProfileIndex].classList.add("active");
+    // show the correct image for this profile
+    const images =
+      profiles[currentProfileIndex].querySelectorAll(".carousel-image");
+    if (images.length > 0) {
+      images[carouselIndices[currentProfileIndex]].classList.add("active");
+    }
   }
 }
 
