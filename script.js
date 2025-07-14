@@ -7,12 +7,6 @@ this app displays multiple intern profiles, each with its own image carousel. th
 - switching between profiles always shows the correct image for that profile.
 - carousel navigation (left/right arrows) only affects the currently active profile.
 
-key concepts:
-1. carouselindices: an array where each element stores the current image index for a profile's carousel. for example, carouselindices[0] is the index for profile 1, carouselindices[1] for profile 2, etc.
-2. profilecarousel(direction): a generic function that moves the carousel left or right for the currently active profile. it updates the correct index in carouselindices and toggles the 'active' class on images to show/hide them.
-3. updateprofile(): when switching profiles, this function hides all profiles and their images, then shows the selected profile and the correct image in its carousel (using carouselindices).
-
-this approach ensures each profile's carousel is independent, and navigation is smooth and bug-free.
 */
 // global state management - keeps track of which profile is currently displayed
 let currentProfileIndex = 0; // start at the first profile (index 0)
@@ -21,6 +15,12 @@ const totalProfiles = profiles.length; // count how many profiles there are for 
 
 // carousel state management for all profiles - array of indices
 let carouselIndices = Array.from({ length: totalProfiles }, () => 0); // each profile gets its own index
+
+// when a carousel arrow is clicked, the profileCarousel function is triggered.
+// this function finds all images for the active profile's carousel and updates which image is visible.
+// it checks the current image index for the profile, hides the current image, and shows the next or previous image based on the direction.
+// specifically, it updates the carouselIndices array to remember each profile's current image, ensuring carousel state is preserved per profile.
+// finally, only the correct image for the active profile is visible, and navigation is smooth and independent for each profile.
 
 // =====================
 // handles left/right arrow clicks for the active profile's image carousel.
@@ -78,6 +78,12 @@ function updateProfile() {
     }
   }
 }
+//The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
+
+//that is why there was a bug where 2 images showed. 
+
+//this makes it so that we know which profile is active and every other image is unactive. 
+
 
 // =====================
 // navigates to the next profile in the sequence.
@@ -213,6 +219,12 @@ function getCurrentProfileQrCode() {
   // return the qr code path for the current profile index
   return qrCodes[currentProfileIndex];
 }
+
+// when the like button is clicked (or enter is pressed), the showcoffeemodal function is triggered.
+// this function finds all necessary modal elements (like match title, description, and qr code area).
+// it checks if these elements exist, and if so, replaces their placeholder content with personalized info for the current profile.
+// specifically, it updates the match title and description, and displays the correct qr code image.
+// finally, it makes the modal visible with the updated information for the user.
 
 // =====================
 // shows the coffee chat modal with qr code.
