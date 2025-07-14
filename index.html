@@ -1,0 +1,398 @@
+<!-- start of html document - declares this is an html5 document -->
+<!DOCTYPE html> <!-- declare document type as html5 -->
+<html lang="en"> <!-- root html element with english language attribute -->
+
+<head> <!-- start of head section - contains metadata and links -->
+  <meta charset="UTF-8"> <!-- set character encoding to utf-8 for proper text display -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- responsive design meta tag for mobile devices -->
+  <title>HORDE - Meet the Interns</title> <!-- page title that appears in browser tab -->
+  <link rel="stylesheet" href="styles.css"> <!-- link to external css file for styling -->
+</head> <!-- end of head section -->
+
+<body> <!-- start of body section - contains all visible content -->
+  <div class="app-container"> <!-- main app container - the white card that holds everything -->
+    <div class="header"> <!-- header section - contains app title and subtitle -->
+      <h1>horde</h1> <!-- main app title - displays "horde" -->
+      <p>meet the intern squad!</p> <!-- app subtitle - displays tagline -->
+    </div> <!-- end header section -->
+    <div id="profileContainer"> <!-- container for all profile cards - holds all intern profiles -->
+      <!-- Profile 1 - Christopher Jung -->
+      <div class="profile-card active"> <!-- first profile card, active by default (shown first) -->
+        <div class="image-carousel"> <!-- image carousel container for profile 1's multiple photos -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="carousel-image active" data-index="0" />
+          <!-- first image - professional headshot, active by default -->
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=300&fit=crop&crop=face"
+            class="carousel-image" data-index="1" /> <!-- second image - casual coffee shot, hidden by default -->
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=300&fit=crop&crop=face"
+            class="carousel-image" data-index="2" /> <!-- third image - outdoor activity, hidden by default -->
+          <button class="carousel-arrow left" onclick="profile1Carousel(-1)">&#8592;</button>
+          <!-- left arrow button for carousel navigation -->
+          <button class="carousel-arrow right" onclick="profile1Carousel(1)">&#8594;</button>
+          <!-- right arrow button for carousel navigation -->
+        </div> <!-- end image carousel -->
+        <div class="profile-info"> <!-- profile info section - contains name, position, school -->
+          <h3>Christopher Jung</h3> <!-- profile name - displays intern's name -->
+          <p>Technology Intern</p> <!-- profile position - displays intern's role -->
+          <p>University at Buffalo</p> <!-- profile school - displays intern's university -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card - contains question and answer -->
+          <div class="prompt-question">if i was a villan, i would be...</div> <!-- prompt question text -->
+          <div class="prompt-answer">reverse flash!</div> <!-- prompt answer text -->
+        </div>
+
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question text -->
+          <div class="prompt-answer">asking 'can everyone see my screen?' even when i'm not sharing</div>
+          <!-- prompt answer text -->
+        </div>
+
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question text -->
+          <div class="prompt-answer">accidentally unmuting myself while eating chips on a video call</div>
+          <!-- prompt answer text -->
+        </div>
+      </div> <!-- end profile 1 -->
+      <!-- Profile 2 - Marcus Rodriguez -->
+      <div class="profile-card"> <!-- second profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Marcus Rodriguez</h3> <!-- profile name -->
+          <p>Data Science Intern</p> <!-- profile position -->
+          <p>MIT</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i debug code by adding console.log("here") everywhere and sometimes forget to
+            remove them</div> <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">bringing way too much coffee to stand-ups and asking "can you see my screen?" twice
+          </div> <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">merge conflicts. i break into cold sweats when i see &gt;&gt;&gt;&gt; head</div>
+          <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 2 -->
+      <!-- Profile 3 - Emily Johnson -->
+      <div class="profile-card"> <!-- third profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Emily Johnson</h3> <!-- profile name -->
+          <p>UX Design Intern</p> <!-- profile position -->
+          <p>UC Berkeley</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i have 47 tabs open right now and i know exactly what each one is for</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">saying "that's not very user-friendly" about literally everything, including
+            automatic doors</div> <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">comic sans. i see it everywhere and it haunts my dreams</div>
+          <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 3 -->
+      <!-- Profile 4 - Alex Thompson -->
+      <div class="profile-card"> <!-- fourth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Alex Thompson</h3> <!-- profile name -->
+          <p>Product Manager Intern</p> <!-- profile position -->
+          <p>Harvard University</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've made a spreadsheet to track my other spreadsheets</div> <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">turning every casual conversation into a data visualization opportunity</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">null values. they're everywhere and they mean nothing but somehow everything</div>
+          <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 4 -->
+      <!-- Profile 5 - Priya Patel -->
+      <div class="profile-card"> <!-- fifth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 5 -->
+      <!-- Profile 6 - Priya Patel 2 (duplicate for testing) -->
+      <div class="profile-card"> <!-- sixth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel 2</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 6 -->
+      <!-- Profile 7 - Priya Patel 3 (duplicate for testing) -->
+      <div class="profile-card"> <!-- seventh profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel 3</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 7 -->
+      <!-- Profile 8 - Priya Patel 4 (duplicate for testing) -->
+      <div class="profile-card"> <!-- eighth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel 4</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 8 -->
+      <!-- Profile 9 - Priya Patel 5 (duplicate for testing) -->
+      <div class="profile-card"> <!-- ninth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel 5</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 9 -->
+      <!-- Profile 10 - Priya Patel 6 (duplicate for testing) -->
+      <div class="profile-card"> <!-- tenth profile card - hidden by default -->
+        <div class="profile-photo-card"> <!-- profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="profile-info"> <!-- profile info section -->
+          <h3>Priya Patel 6</h3> <!-- profile name -->
+          <p>Marketing Intern</p> <!-- profile position -->
+          <p>University of Michigan</p> <!-- profile school -->
+        </div>
+        <div class="prompt-card"> <!-- first prompt card -->
+          <div class="prompt-question">my biggest red flag is...</div> <!-- prompt question -->
+          <div class="prompt-answer">i've turned my linkedin into a personal brand before i even have a career</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- second profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- second prompt card -->
+          <div class="prompt-question">i'm known for...</div> <!-- prompt question -->
+          <div class="prompt-answer">using the phrase "let's circle back on that" in every single meeting</div>
+          <!-- prompt answer -->
+        </div>
+        <div class="profile-photo-card"> <!-- third profile photo container -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=face"
+            class="profile-photo" /> <!-- profile photo image -->
+        </div>
+        <div class="prompt-card"> <!-- third prompt card -->
+          <div class="prompt-question">my most irrational fear is...</div> <!-- prompt question -->
+          <div class="prompt-answer">running out of buzzwords mid-presentation and having to speak like a normal person
+          </div> <!-- prompt answer -->
+        </div>
+      </div> <!-- end profile 10 -->
+    </div> <!-- end profileContainer -->
+    <div class="action-buttons"> <!-- action buttons container - holds like/pass buttons -->
+      <button class="action-btn pass-btn" onclick="reactToProfile('pass')">❌</button> <!-- pass button - red x icon -->
+      <button class="action-btn like-btn" onclick="reactToProfile('like')">❤️</button>
+      <!-- like button - green heart icon -->
+    </div> <!-- end action buttons -->
+  </div> <!-- end app-container -->
+
+  <!-- navigation buttons for moving between profiles - positioned outside app container -->
+  <button class="nav-btn nav-left" onclick="previousProfile()">‹</button>
+  <!-- left navigation button - goes to previous profile -->
+  <button class="nav-btn nav-right" onclick="nextProfile()">›</button>
+  <!-- right navigation button - goes to next profile -->
+
+  <div id="coffeeModal" class="modal-overlay" style="display: none;">
+    <!-- modal overlay for coffee chat - hidden by default -->
+    <div class="modal-content"> <!-- modal content box - contains match info and qr code -->
+      <div class="match-title">PLACEHOLDER</div> <!-- big match title - will be populated by javascript -->
+      <p class="match-desc">PLACEHOLDER</p> <!-- match description - will be populated by javascript -->
+      <div class="qr-code-placeholder">qr</div> <!-- qr code placeholder - will show actual qr code when modal opens -->
+      <button id="closeModalBtn">ok</button> <!-- close modal button - allows user to dismiss modal -->
+    </div> <!-- end modal content -->
+  </div> <!-- end modal overlay -->
+
+  <script src="script.js"></script> <!-- link to external javascript file for functionality -->
+</body> <!-- end body section -->
+
+</html> <!-- end html document -->

@@ -1,0 +1,727 @@
+/* load custom tiemposheadline fonts - light weight variant */
+@font-face {
+  font-family: 'TiemposHeadline';
+  /* define font family name */
+  src: url('fonts/TiemposHeadline-Light.otf') format('opentype');
+  /* specify font file path and format */
+  font-weight: 300;
+  /* set font weight to light (300) */
+  font-style: normal;
+  /* set font style to normal (not italic) */
+}
+
+/* load custom tiemposheadline fonts - bold weight variant */
+@font-face {
+  font-family: 'TiemposHeadline';
+  /* define font family name */
+  src: url('fonts/TiemposHeadline-Bold.otf') format('opentype');
+  /* specify font file path and format */
+  font-weight: 700;
+  /* set font weight to bold (700) */
+  font-style: normal;
+  /* set font style to normal (not italic) */
+}
+
+/* load custom tiemposheadline fonts - black weight variant */
+@font-face {
+  font-family: 'TiemposHeadline';
+  /* define font family name */
+  src: url('fonts/TiemposHeadline-Black.otf') format('opentype');
+  /* specify font file path and format */
+  font-weight: 900;
+  /* set font weight to black (900) */
+  font-style: normal;
+  /* set font style to normal (not italic) */
+}
+
+/* base styles for html and body elements - sets up the main page layout */
+html,
+body {
+  height: 100%;
+  /* make elements take full viewport height */
+  margin: 0;
+  /* remove default browser margin */
+  padding: 0;
+  /* remove default browser padding */
+  background: linear-gradient(to bottom, #ff5600, #ff772e);
+  /* set gradient style barbarian background color */
+  width: 100vw;
+  /* make elements take full viewport width */
+  overflow: hidden;
+  /* prevent page scrolling */
+  display: flex;
+  /* use flexbox for centering content */
+  align-items: center;
+  /* center content vertically */
+  justify-content: center;
+  /* center content horizontally */
+  font-family: 'TiemposHeadline', serif;
+  /* set custom font with fallback */
+  font-weight: 300;
+  /* use light font weight by default */
+}
+
+/* main app container styles - the white card that holds all content */
+.app-container {
+  background: #fff;
+  /* white background for the main card */
+  border-radius: 24px;
+  /* rounded corners for modern look */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  /* subtle shadow for depth */
+  max-width: 450px;
+  /* maximum width to keep card manageable */
+  width: 100%;
+  /* responsive width that fills available space */
+  max-height: 90vh;
+  /* maximum height to prevent overflow */
+  overflow-y: auto;
+  /* allow vertical scrolling if content is too tall */
+  padding: 32px 0 0 0;
+  /* top padding for header, no horizontal padding */
+  display: flex;
+  /* use flexbox layout */
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center children horizontally */
+  scrollbar-width: none;
+  /* hide scrollbar in firefox browsers */
+  -ms-overflow-style: none;
+  /* hide scrollbar in internet explorer/edge */
+  position: relative;
+  /* establish positioning context for absolute children */
+}
+
+/* hide scrollbar in webkit browsers (chrome, safari, etc.) */
+.app-container::-webkit-scrollbar {
+  display: none;
+  /* completely hide the scrollbar */
+}
+
+/* hide the app container when modal is open */
+.app-container.hide-when-modal {
+  display: none !important;
+  /* force hide with high specificity */
+}
+
+/* layout for header, profile container, and action buttons - sets consistent width */
+.header,
+#profileContainer,
+.action-buttons {
+  width: 90%;
+  /* set width to 90% of parent container */
+  margin: 0 auto;
+  /* center horizontally with auto margins */
+}
+
+/* header section styles - contains the app title and subtitle */
+.header {
+  text-align: center;
+  /* center all text in header */
+  margin-bottom: 24px;
+  /* add space below header */
+}
+
+/* main app title styles */
+.header h1 {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 900;
+  /* use black weight for bold appearance */
+  font-size: 2.5em;
+  /* large font size for impact */
+  margin: 0 0 8px 0;
+  /* no top margin, 8px bottom margin */
+  color: #111;
+  /* dark text color */
+  text-align: center;
+  /* center the text */
+  letter-spacing: -0.5px;
+  /* slightly tighter letter spacing */
+}
+
+/* app subtitle styles */
+.header p {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 300;
+  /* use light weight for subtitle */
+  font-size: 1.1em;
+  /* slightly larger than normal text */
+  margin: 0;
+  /* no margin */
+  color: #666;
+  /* gray text color */
+  text-align: center;
+  /* center the text */
+}
+
+/* profile container holds all profile cards */
+#profileContainer {
+  width: 100%;
+  /* take full width of parent */
+  display: flex;
+  /* use flexbox layout */
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center children horizontally */
+}
+
+/* profile card styles - individual profile containers */
+.profile-card {
+  width: 100%;
+  /* take full width of parent */
+  display: none;
+  /* hidden by default */
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center children horizontally */
+  margin-bottom: 32px;
+  /* space below each profile card */
+}
+
+/* show active profile card */
+.profile-card.active {
+  display: flex;
+  /* show when active class is added */
+}
+
+/* card styles for profile photo and prompt cards */
+.profile-photo-card,
+.prompt-card {
+  background: #fff;
+  /* white background for card */
+  border-radius: 24px;
+  /* rounded corners */
+  box-shadow: 0 2px 16px 0 rgba(60, 60, 60, 0.08);
+  /* subtle shadow */
+  width: 80%;
+  /* card width relative to parent */
+  margin: 0 auto 24px auto;
+  /* center horizontally, 24px bottom margin */
+  display: flex;
+  /* use flexbox layout */
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center children horizontally */
+  padding: 0;
+  /* no padding by default */
+}
+
+/* prompt card background is gray for visual contrast */
+.prompt-card {
+  background: #e0e0e0;
+  /* darker gray background for contrast */
+  padding: 16px;
+  /* add padding inside prompt cards */
+}
+
+/* profile photo styles */
+.profile-photo {
+  width: 100%;
+  /* fill the card width */
+  max-width: 400px;
+  /* maximum width to prevent oversized images */
+  height: auto;
+  /* maintain aspect ratio */
+  aspect-ratio: 1/1;
+  /* force square aspect ratio for all images */
+  object-fit: cover;
+  /* crop image to fill the square */
+  border-radius: 24px;
+  /* rounded corners */
+  display: block;
+  /* block display */
+}
+
+/* carousel styles for profile 1 - image carousel container */
+.image-carousel {
+  position: relative;
+  /* establish positioning context for arrows */
+  width: 80%;
+  /* width relative to parent */
+  margin: 0 auto 24px auto;
+  /* center horizontally, 24px bottom margin */
+  background: #fff;
+  /* white background */
+  border-radius: 24px;
+  /* rounded corners */
+  box-shadow: 0 2px 16px 0 rgba(60, 60, 60, 0.08);
+  /* subtle shadow */
+  padding: 0;
+  /* no padding */
+}
+
+/* individual carousel image styles */
+.carousel-image {
+  display: none;
+  /* hidden by default */
+  width: 100%;
+  /* fill container width */
+  max-width: 400px;
+  /* maximum width */
+  height: auto;
+  /* maintain aspect ratio */
+  aspect-ratio: 1/1;
+  /* force square aspect ratio */
+  object-fit: cover;
+  /* crop to fill square */
+  border-radius: 24px;
+  /* rounded corners */
+  position: relative;
+  /* establish positioning context */
+}
+
+/* show active carousel image */
+.carousel-image.active {
+  display: block;
+  /* show when active class is added */
+}
+
+/* carousel navigation arrow styles */
+.carousel-arrow {
+  position: absolute;
+  /* position relative to carousel container */
+  top: 50%;
+  /* center vertically */
+  transform: translateY(-50%);
+  /* fine-tune vertical centering */
+  background: rgba(255, 255, 255, 0.8);
+  /* semi-transparent white background */
+  border: none;
+  /* no border */
+  border-radius: 50%;
+  /* circular button */
+  width: 36px;
+  /* button width */
+  height: 36px;
+  /* button height */
+  font-size: 20px;
+  /* arrow size */
+  cursor: pointer;
+  /* pointer cursor on hover */
+  z-index: 2;
+  /* ensure arrows appear above images */
+}
+
+/* left arrow positioning */
+.carousel-arrow.left {
+  left: 10px;
+  /* position from left edge */
+}
+
+/* right arrow positioning */
+.carousel-arrow.right {
+  right: 10px;
+  /* position from right edge */
+}
+
+/* profile info section styles - name, position, school */
+.profile-info {
+  text-align: center;
+  /* center all text */
+  margin: 16px 0 24px 0;
+  /* vertical spacing around info */
+  padding: 0 20px;
+  /* horizontal padding */
+}
+
+/* profile name styles */
+.profile-info h3 {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 700;
+  /* bold weight */
+  font-size: 1.4em;
+  /* larger font size */
+  margin: 0 0 4px 0;
+  /* no top margin, 4px bottom margin */
+  color: #111;
+  /* dark text color */
+}
+
+/* profile details styles (position, school) */
+.profile-info p {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 300;
+  /* light weight */
+  font-size: 0.95em;
+  /* slightly smaller than normal */
+  margin: 2px 0;
+  /* minimal vertical spacing */
+  color: #666;
+  /* gray text color */
+}
+
+/* first paragraph (position) gets different styling */
+.profile-info p:first-of-type {
+  color: #444;
+  /* slightly darker color */
+  font-weight: 600;
+  /* semi-bold weight */
+}
+
+/* prompt question styles */
+.prompt-question {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 700;
+  /* bold weight */
+  font-size: 1.1em;
+  /* slightly larger than normal */
+  color: #111;
+  /* dark text color */
+  margin-bottom: 12px;
+  /* space below question */
+  text-align: center;
+  /* center text */
+}
+
+/* prompt answer styles */
+.prompt-answer {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 300;
+  /* light weight */
+  font-size: 1em;
+  /* normal size */
+  color: #333;
+  /* dark gray color */
+  line-height: 1.5;
+  /* increased line height for readability */
+  text-align: center;
+  /* center text */
+}
+
+/* reduce bottom margin on the last prompt card */
+.prompt-card:last-of-type {
+  margin-bottom: 8px;
+  /* reduced bottom margin for last prompt */
+}
+
+/* action buttons at the bottom of the screen */
+.action-buttons {
+  position: relative;
+  /* establish positioning context */
+  display: flex;
+  /* use flexbox layout */
+  gap: 28px;
+  /* space between buttons */
+  justify-content: center;
+  /* center buttons horizontally */
+  margin-top: 5px;
+  /* minimal space above buttons */
+  margin-bottom: 24px;
+  /* space below buttons */
+}
+
+/* individual action button styles */
+.action-btn {
+  width: 64px;
+  /* button width */
+  height: 64px;
+  /* button height */
+  border-radius: 50%;
+  /* circular button */
+  border: none;
+  /* no border */
+  background: #000;
+  /* black background */
+  color: #fff;
+  /* white icon color */
+  font-size: 32px;
+  /* large icon size */
+  box-shadow: 0 2px 16px 0 rgba(60, 60, 60, 0.10);
+  /* subtle shadow */
+  display: flex;
+  /* use flexbox for centering */
+  align-items: center;
+  /* center vertically */
+  justify-content: center;
+  /* center horizontally */
+  cursor: pointer;
+  /* pointer cursor on hover */
+  transition: box-shadow 0.2s, transform 0.2s;
+  /* smooth transitions */
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 700;
+  /* bold weight */
+  font-size: 1.2em;
+  /* slightly larger text */
+}
+
+/* button press effect */
+.action-btn:active {
+  transform: scale(0.95);
+  /* slightly shrink when pressed */
+}
+
+/* button hover effect */
+.action-btn:hover {
+  box-shadow: 0 4px 24px 0 rgba(60, 60, 60, 0.18);
+  /* stronger shadow on hover */
+}
+
+/* pass button specific styling */
+.pass-btn {
+  color: #ff4d4f;
+  /* red color for pass button */
+}
+
+/* like button specific styling */
+.like-btn {
+  color: #2ecc71;
+  /* green color for like button */
+}
+
+/* modal overlay covers the whole screen */
+.modal-overlay {
+  position: fixed;
+  /* fixed position relative to viewport */
+  top: 0;
+  /* start from top */
+  left: 0;
+  /* start from left */
+  width: 100vw;
+  /* full viewport width */
+  height: 100vh;
+  /* full viewport height */
+  background: rgba(30, 30, 30, 0.55);
+  /* semi-transparent dark overlay */
+  display: flex;
+  /* use flexbox for centering */
+  align-items: center;
+  /* center vertically */
+  justify-content: center;
+  /* center horizontally */
+  z-index: 1000;
+  /* ensure modal appears above everything */
+}
+
+/* modal content box styles */
+.modal-content {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 300;
+  /* light weight */
+  font-size: 1.15rem;
+  /* normal size */
+  background: #fff;
+  /* white background */
+  border-radius: 18px;
+  /* rounded corners */
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+  /* shadow for depth */
+  padding: 32px 24px;
+  /* padding inside modal */
+  min-width: 180px;
+  /* minimum width */
+  max-width: 50vw;
+  /* maximum width relative to viewport */
+  text-align: center;
+  /* center text */
+  display: flex;
+  /* use flexbox layout */
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center children horizontally */
+}
+
+/* big bold match title in modal */
+.match-title {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 900;
+  /* black weight for bold appearance */
+  font-size: 2.1em;
+  /* large font size */
+  color: #111;
+  /* dark text color */
+  text-align: center;
+  /* center text */
+  margin-bottom: 10px;
+  /* space below title */
+}
+
+/* smaller match description in modal */
+.match-desc {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 300;
+  /* light weight */
+  font-size: 1.1em;
+  /* normal size */
+  color: #333;
+  /* dark gray color */
+  text-align: center;
+  /* center text */
+  margin-bottom: 18px;
+  /* space below description */
+}
+
+/* qr code placeholder inside modal */
+.qr-code-placeholder {
+  width: 280px;
+  /* qr code width */
+  height: 280px;
+  /* qr code height */
+  background: #f0f0f0;
+  /* light gray background */
+  border: 2px dashed #ccc;
+  /* dashed border */
+  border-radius: 8px;
+  /* rounded corners */
+  display: none;
+  /* hidden by default */
+  align-items: center;
+  /* center content vertically */
+  justify-content: center;
+  /* center content horizontally */
+  font-size: 1.1em;
+  /* text size */
+  color: #666;
+  /* gray text color */
+  margin: 20px auto 0 auto;
+  /* space above, center horizontally */
+  order: 2;
+  /* flex order in modal */
+}
+
+/* show qr code when .show class is added */
+.qr-code-placeholder.show {
+  display: flex;
+  /* show when .show class is added */
+}
+
+/* ok button in modal */
+#closeModalBtn {
+  font-family: 'TiemposHeadline', serif;
+  /* use custom font */
+  font-weight: 700;
+  /* bold weight */
+  font-size: 1rem;
+  /* normal size */
+  margin-top: 20px;
+  /* space above button */
+  padding: 10px 28px;
+  /* padding inside button */
+  border: none;
+  /* no border */
+  border-radius: 8px;
+  /* rounded corners */
+  background: #23242a;
+  /* dark background */
+  color: #fff;
+  /* white text */
+  cursor: pointer;
+  /* pointer cursor */
+  transition: background 0.2s;
+  /* smooth transition */
+  order: 3;
+  /* flex order in modal */
+}
+
+/* ok button hover effect */
+#closeModalBtn:hover {
+  background: #44444a;
+  /* lighter background on hover */
+}
+
+/* navigation buttons for moving between profiles */
+.nav-btn {
+  position: fixed;
+  /* fixed position on screen */
+  bottom: 20px;
+  /* distance from bottom */
+  width: 50px;
+  /* button width */
+  height: 50px;
+  /* button height */
+  border-radius: 50%;
+  /* circular button */
+  border: none;
+  /* no border */
+  background: #000;
+  /* black background */
+  color: #fff;
+  /* white text */
+  font-size: 24px;
+  /* large arrow size */
+  font-weight: bold;
+  /* bold text */
+  cursor: pointer;
+  /* pointer cursor */
+  display: flex;
+  /* use flexbox for centering */
+  align-items: center;
+  /* center vertically */
+  justify-content: center;
+  /* center horizontally */
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.15);
+  /* subtle shadow */
+  transition: all 0.2s;
+  /* smooth transitions */
+  z-index: 100;
+  /* ensure buttons appear above other content */
+}
+
+/* navigation button hover effect */
+.nav-btn:hover {
+  transform: scale(1.1);
+  /* slightly larger on hover */
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.25);
+  /* stronger shadow on hover */
+}
+
+/* left navigation button positioning */
+.nav-left {
+  left: 600px;
+  /* position from left edge */
+}
+
+/* right navigation button positioning */
+.nav-right {
+  right: 600px;
+  /* position from right edge */
+}
+
+/* responsive styles for mobile devices */
+@media (max-width: 500px) {
+  .app-container {
+    max-width: 100vw;
+    /* full viewport width on mobile */
+    padding: 12px 0 80px 0;
+    /* reduced padding for mobile */
+  }
+
+  .profile-photo-card,
+  .prompt-card {
+    border-radius: 16px;
+    /* smaller border radius on mobile */
+    margin-bottom: 14px;
+    /* reduced margin on mobile */
+  }
+
+  .profile-photo {
+    border-radius: 16px;
+    /* smaller border radius on mobile */
+    max-width: 100vw;
+    /* full viewport width on mobile */
+  }
+
+  .action-btn {
+    width: 48px;
+    /* smaller button size on mobile */
+    height: 48px;
+    /* smaller button size on mobile */
+    font-size: 22px;
+    /* smaller icon size on mobile */
+  }
+}
