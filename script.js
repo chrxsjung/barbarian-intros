@@ -80,10 +80,9 @@ function updateProfile() {
 }
 //The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
 
-//that is why there was a bug where 2 images showed. 
+//that is why there was a bug where 2 images showed.
 
-//this makes it so that we know which profile is active and every other image is unactive. 
-
+//this makes it so that we know which profile is active and every other image is unactive.
 
 // =====================
 // navigates to the next profile in the sequence.
@@ -152,8 +151,10 @@ function reactToProfile(action) {
         scrollAppContainerToTop();
       });
     } else if (action === "pass") {
-      // if user passed the profile, just move to next profile
-      nextProfile();
+      showRejectModal(() => {
+        nextProfile();
+        scrollAppContainerToTop();
+      });
     }
   }, 350); // wait 350ms for fade-out animation to complete
 }
@@ -239,7 +240,7 @@ function getCurrentProfileQrCode() {
 function showCoffeeModal(onClose) {
   // get references to modal elements
   const modal = document.getElementById("coffeeModal"); // get the modal overlay element
-  const closeBtn = document.getElementById("closeModalBtn"); // get the ok button element
+  const closeBtn = document.getElementById("closeCoffeeModalBtn"); // get the ok button element (unique id)
   const qrCode = document.querySelector(".qr-code-placeholder"); // get the qr code container
   const matchTitle = modal.querySelector(".match-title"); // get the match title element
   const matchDesc = modal.querySelector(".match-desc"); // get the match description element
@@ -271,7 +272,58 @@ function showCoffeeModal(onClose) {
     appContainer.classList.add("hide-when-modal");
   }
 
-  // set up the close button click handler
+  // set up the close button click handler (for coffee modal)
+  closeBtn.onclick = () => {
+    modal.style.display = "none"; // hide the modal
+    if (qrCode) {
+      qrCode.classList.remove("show"); // hide the qr code
+      // reset the qr code back to placeholder text
+      qrCode.innerHTML = "qr";
+    }
+    if (appContainer) {
+      appContainer.classList.remove("hide-when-modal"); // show the app container again
+    }
+    // execute the callback function if provided
+    if (typeof onClose === "function") onClose();
+  };
+}
+
+function showRejectModal(onClose) {
+  // get references to modal elements
+  const modal = document.getElementById("rejectModal"); // get the modal overlay element
+  const closeBtn = document.getElementById("closeRejectModalBtn"); // get the ok button element (unique id)
+  const qrCode = document.querySelector(".qr-code-placeholder2"); // get the qr code container
+  const matchTitle = modal.querySelector(".match-title"); // get the match title element
+  const matchDesc = modal.querySelector(".match-desc"); // get the match description element
+  const appContainer = document.querySelector(".app-container"); // get the main app container
+
+  // safety check - if modal or button not found, exit function
+  if (!modal || !closeBtn) return;
+
+  // set the match title and description with the current profile name
+  const currentName = getCurrentProfileName(); // get current profile's name
+  if (matchTitle) {
+    matchTitle.textContent = "you don't get that option lol"; // set the match title
+  }
+  if (matchDesc) {
+    matchDesc.textContent = `Connect with ${currentName} by scanning the QR code below.`; // set personalized description
+  }
+
+  // show the modal and qr code
+  modal.style.display = "flex"; // display the modal overlay
+  if (qrCode) {
+    // get the qr code file path for the current profile
+    const currentQrCode = getCurrentProfileQrCode();
+    // replace the placeholder text with the actual qr code image
+    qrCode.innerHTML = `<img src="${currentQrCode}" alt="QR Code" style="width: 100%; height: 100%; object-fit: contain;">`;
+    qrCode.classList.add("show"); // show the qr code container
+  }
+  // hide the main app container while modal is open
+  if (appContainer) {
+    appContainer.classList.add("hide-when-modal");
+  }
+
+  // set up the close button click handler (for reject modal)
   closeBtn.onclick = () => {
     modal.style.display = "none"; // hide the modal
     if (qrCode) {

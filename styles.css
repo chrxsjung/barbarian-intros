@@ -56,6 +56,10 @@
   left: 15px;
 
 }
+.prompt-answer strong {
+  font-weight: 700;
+}
+
 
 /* button settings 👆 */
 
@@ -811,7 +815,7 @@ body {
 }
 
 /* qr code placeholder inside modal */
-.qr-code-placeholder {
+.qr-code-placeholder, .qr-code-placeholder2 {
   width: 280px;
   /* qr code width */
   height: 280px;
@@ -839,13 +843,13 @@ body {
 }
 
 /* show qr code when .show class is added */
-.qr-code-placeholder.show {
+.qr-code-placeholder.show, .qr-code-placeholder2.show {
   display: flex;
   /* show when .show class is added */
 }
 
 /* ok button in modal */
-#closeModalBtn {
+#closeCoffeeModalBtn, #closeRejectModalBtn {
   font-family: 'TiemposHeadline', serif;
   /* use custom font */
   font-weight: 700;
@@ -1089,7 +1093,7 @@ body {
   }
 
   /* qr code adjustments for mobile */
-  .qr-code-placeholder {
+  .qr-code-placeholder, .qr-code-placeholder2 {
     width: 240px;
     /* smaller qr code on mobile */
     height: 240px;
