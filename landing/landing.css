@@ -1,0 +1,16 @@
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.slogan {
+  margin-top: 50px;
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'TiemposHeadline', serif;
+  text-align: center;
+}

@@ -254,7 +254,7 @@ function showCoffeeModal(onClose) {
     matchTitle.textContent = "It's a Match! 🎉"; // set the match title
   }
   if (matchDesc) {
-    matchDesc.textContent = `You and ${currentName} are now connected! Time to welcome them to Barbarian properly.`; // set personalized description
+    matchDesc.textContent = `Connect with ${currentName} by scanning the QR code below.`; // set personalized description
   }
 
   // show the modal and qr code
