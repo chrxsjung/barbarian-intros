@@ -56,6 +56,7 @@
   left: 15px;
 
 }
+
 .prompt-answer strong {
   font-weight: 700;
 }
@@ -77,6 +78,7 @@
   transition: var(--btn-transition);
   overflow: hidden;
   box-shadow: var(--btn-shadow);
+  border-radius: 12px;
 }
 
 .ui-btn span {
@@ -199,6 +201,7 @@
   transition: var(--btn-transition);
   overflow: hidden;
   box-shadow: var(--btn-shadow);
+  border-radius: 12px;
 }
 
 .ui-btn2 span {
@@ -815,7 +818,8 @@ body {
 }
 
 /* qr code placeholder inside modal */
-.qr-code-placeholder, .qr-code-placeholder2 {
+.qr-code-placeholder,
+.qr-code-placeholder2 {
   width: 280px;
   /* qr code width */
   height: 280px;
@@ -843,13 +847,15 @@ body {
 }
 
 /* show qr code when .show class is added */
-.qr-code-placeholder.show, .qr-code-placeholder2.show {
+.qr-code-placeholder.show,
+.qr-code-placeholder2.show {
   display: flex;
   /* show when .show class is added */
 }
 
 /* ok button in modal */
-#closeCoffeeModalBtn, #closeRejectModalBtn {
+#closeCoffeeModalBtn,
+#closeRejectModalBtn {
   font-family: 'TiemposHeadline', serif;
   /* use custom font */
   font-weight: 700;
@@ -1093,7 +1099,8 @@ body {
   }
 
   /* qr code adjustments for mobile */
-  .qr-code-placeholder, .qr-code-placeholder2 {
+  .qr-code-placeholder,
+  .qr-code-placeholder2 {
     width: 240px;
     /* smaller qr code on mobile */
     height: 240px;
