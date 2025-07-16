@@ -13,14 +13,14 @@ let currentProfileIndex = 0; // start at the first profile (index 0)
 const profiles = document.querySelectorAll(".profile-card"); // get all profile cards from the page using css selector
 const totalProfiles = profiles.length; // count how many profiles there are for navigation limits
 
-// carousel state management for all profiles - array of indices
-let carouselIndices = Array.from({ length: totalProfiles }, () => 0); // each profile gets its own index
+// carousel state management - tracks current image for active profile
+let currentCarouselIndex = 0; // tracks which image is currently shown in the active profile's carousel
 
 // when a carousel arrow is clicked, the profileCarousel function is triggered.
 // this function finds all images for the active profile's carousel and updates which image is visible.
-// it checks the current image index for the profile, hides the current image, and shows the next or previous image based on the direction.
-// specifically, it updates the carouselIndices array to remember each profile's current image, ensuring carousel state is preserved per profile.
-// finally, only the correct image for the active profile is visible, and navigation is smooth and independent for each profile.
+// it hides the current image and shows the next or previous image based on the direction.
+// the currentCarouselIndex is updated to track which image is currently shown.
+// finally, only the correct image for the active profile is visible.
 
 // =====================
 // handles left/right arrow clicks for the active profile's image carousel.
@@ -28,27 +28,25 @@ let carouselIndices = Array.from({ length: totalProfiles }, () => 0); // each pr
 // steps:
 //   1. gets the currently active profile and its images.
 //   2. removes 'active' from the current image.
-//   3. updates the carousel index for this profile (with bounds checking).
+//   3. updates the carousel index (with bounds checking).
 //   4. adds 'active' to the new image to show it.
-// outcome: only the correct image for the active profile is visible; carousel state is preserved per profile.
+// outcome: only the correct image for the active profile is visible.
 // =====================
 function profileCarousel(direction) {
-  // get the index of the currently active profile
-  const activeProfile = currentProfileIndex;
   // get all images in the currently active profile's carousel
   const images = document.querySelectorAll(
     ".profile-card.active .carousel-image"
   );
   if (images.length === 0) return; // safety check
   // remove active class from current image to hide it
-  images[carouselIndices[activeProfile]].classList.remove("active");
-  // update index for this profile with bounds checking
-  carouselIndices[activeProfile] = Math.max(
+  images[currentCarouselIndex].classList.remove("active");
+  // update index with bounds checking
+  currentCarouselIndex = Math.max(
     0, // minimum index (first image)
-    Math.min(carouselIndices[activeProfile] + direction, images.length - 1) // maximum index (last image)
+    Math.min(currentCarouselIndex + direction, images.length - 1) // maximum index (last image)
   );
   // add active class to new image to show it
-  images[carouselIndices[activeProfile]].classList.add("active");
+  images[currentCarouselIndex].classList.add("active");
 }
 
 // =====================
@@ -56,8 +54,8 @@ function profileCarousel(direction) {
 // trigger: called when switching profiles (next/previous), or on app init.
 // steps:
 //   1. hides all profile cards and their images.
-//   2. shows the current profile and the correct image in its carousel.
-// outcome: only one profile and its correct image are visible at a time.
+//   2. shows the current profile and the first image in its carousel.
+// outcome: only one profile and its first image are visible at a time.
 // =====================
 function updateProfile() {
   // hide all profile cards and all their images
@@ -70,19 +68,15 @@ function updateProfile() {
   // show the current profile by adding the 'active' class (if profile exists)
   if (profiles[currentProfileIndex]) {
     profiles[currentProfileIndex].classList.add("active");
-    // show the correct image for this profile
+    // show the first image for this profile
     const images =
       profiles[currentProfileIndex].querySelectorAll(".carousel-image");
     if (images.length > 0) {
-      images[carouselIndices[currentProfileIndex]].classList.add("active");
+      images[0].classList.add("active");
+      currentCarouselIndex = 0; // reset to first image
     }
   }
 }
-//The old updateProfile() only removed the active class from the profile cards, but not from the images inside each profile.
-
-//that is why there was a bug where 2 images showed.
-
-//this makes it so that we know which profile is active and every other image is unactive.
 
 // =====================
 // navigates to the next profile in the sequence.
